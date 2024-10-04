@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLUENSE</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('fotky/logohlavni.jpg'); /* Obrázek pozadí */
+      background-size: cover; /* Zajišťuje, že obrázek pokryje celé pozadí */
+      background-position: center; /* Vycentrování obrázku na střed */
+      background-repeat: no-repeat;
+      overflow: hidden; /* Zabraňuje scrollování */
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: #ff69b4; /* Růžové pozadí menu baru */
+    }
+
+    .logo a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .logo {
+      font-size: 4vw; /* Dynamická velikost loga podle šířky okna */
+      font-weight: bold;
+    }
+
+    .login-register {
+      display: flex;
+      gap: 15px;
+    }
+
+    .login, .register {
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s;
+    }
+
+    .login:hover, .register:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .enter-btn {
+      background-color: #6200ea;
+      color: white;
+      font-size: 24px;
+      padding: 15px 30px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s; /* Přidáno pro transformaci */
+      position: absolute; /* Umožní přesun tlačítka */
+      top: 50%; /* Umístění tlačítka */
+      left: 50%; /* Horizontální střed */
+      transform: translate(-50%, -50%); /* Pro vycentrování */
+      z-index: 1; /* Zajištění, že tlačítko je nad pozadím */
+    }
+
+    .enter-btn.hidden {
+      opacity: 0; /* Skryté tlačítko */
+      transform: translate(-50%, -50%); /* Posun tlačítka dolů */
+    }
+
+    .enter-btn.visible {
+      opacity: 1; /* Viditelné tlačítko */
+      transform: translate(-50%, -50%); /* Tlačítko na své původní místo */
+    }
+
+    /* Responzivní design pro menší obrazovky */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .login-register {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .enter-btn {
+        font-size: 20px;
+        padding: 10px 20px;
+      }
+
+      .logo {
+        font-size: 6vw; /* Logo se ještě více zmenší na menších zařízeních */
+      }
+
+      .login, .register {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="/">FLUENSE</a> <!-- Přidán odkaz na domovskou stránku -->
+    </div>
+    <div class="login-register">
+      <div class="login">Přihlásit</div>
+      <div class="register">Registrovat</div>
+    </div>
+  </header>
+
+  <button class="enter-btn visible">Začít</button>
+
+  <script>
+    let lastScrollTop = 0; // Poslední známá pozice scrollu
+    const button = document.querySelector('.enter-btn');
+
+    window.addEventListener('wheel', function(event) {
+      const currentScroll = window.scrollY || window.pageYOffset;
+
+      if (event.deltaY > 0) { // Scroll dolů
+        button.classList.add('hidden');
+        button.classList.remove('visible');
+      } else { // Scroll nahoru
+        button.classList.remove('hidden');
+        button.classList.add('visible');
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Zamezení negativním hodnotám
+    });
+
+    // Pokud používáte touchpad
+    window.addEventListener('touchmove', function(event) {
+      const touch = event.touches[0];
+
+      if (touch.clientY < lastScrollTop) { // Posun nahoru
+        button.classList.remove('hidden');
+        button.classList.add('visible');
+      } else { // Posun dolů
+        button.classList.add('hidden');
+        button.classList.remove('visible');
+      }
+      lastScrollTop = touch.clientY; // Aktualizace poslední pozice touch
+    });
+  </script>
+
+</body>
+</html>
