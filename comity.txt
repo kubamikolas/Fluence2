@@ -3,3 +3,6 @@ byt ve spravne slozce pomoci cd
 git add .
 git commit -m "popis zmeny"
 git push origin main
+
+
+pro spusteni localhostu: node app.js
