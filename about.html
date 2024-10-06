@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O nás - FLUENSE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0; /* Světle šedé pozadí */
+            color: #333; /* Tmavě šedý text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .header {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #4facfe; /* Barva nadpisu */
+        }
+
+        .content {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: white; /* Bílý blok pro obsah */
+            border-radius: 10px; /* Zaoblené rohy */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Stín pro efekt */
+        }
+
+        .back-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: #4facfe; /* Barva tlačítka */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #00f2fe; /* Tmavší barva při najetí */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">O nás</div>
+    
+    <div class="content">
+        <p>FLUENSE je inovativní platforma zaměřená na spojení influencerů a firem. Naším cílem je usnadnit spolupráci mezi těmito dvěma skupinami a poskytnout jim nástroje, které potřebují k úspěšnému marketingu.</p>
+        <p>Na naší platformě mohou influenceři procházet různé příležitosti ke spolupráci, zatímco firmy mohou snadno vyhledávat influencery podle jejich zaměření a sledovanosti.</p>
+        <p>Věříme, že efektivní marketing je založen na autentických vztazích, a proto jsme vytvořili prostor, kde mohou influenceři a firmy navazovat vzájemné kontakty a spolupracovat na úspěšných projektech.</p>
+    </div>
+
+    <button class="back-button" onclick="window.history.back()">Zpět</button>
+
+</body>
+</html>
