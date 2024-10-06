@@ -9,7 +9,9 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #00f2fe, #4facfe);
+      background: linear-gradient(270deg, #00f2fe, #4facfe, #ff9a9e, #fbc2eb);
+      background-size: 600% 600%;
+      animation: gradientAnimation 12s ease infinite;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -18,6 +20,18 @@
       color: white;
       text-align: center;
       position: relative;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .logo {
@@ -34,39 +48,108 @@
       border: 2px solid white;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background-color 0.3s, color 0.3s, opacity 0.3s;
       margin-top: 20px;
+      margin-right: 10px; /* Vzdálenost mezi tlačítky */
       text-decoration: none; /* Odstranění podtržení */
     }
 
     .join-button:hover {
-      background-color: white;
-      color: #00f2fe;
+      background-color: rgba(242, 242, 242, 0.6);
+      color: white;
+      opacity: 0.8; /* Lehce zesednutí */
     }
 
     .sign-up-button {
-      position: absolute;
-      top: 20px;
-      right: 20px;
       background-color: transparent;
       color: white;
-      font-size: 18px;
-      padding: 10px 20px;
+      font-size: 20px; /* Zmenšená velikost textu */
+      padding: 10px 20px; /* Zmenšené padding */
       border: 2px solid white;
       border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
 
     .sign-up-button:hover {
-      background-color: white;
-      color: #00f2fe;
+      background-color: rgba(242, 242, 242, 0.6);
+      color: white;
+      opacity: 0.8; /* Lehce zesednutí */
+    }
+
+    .language-dropdown {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      cursor: pointer;
+      padding: 10px 15px;
+      font-size: 18px;
+      text-align: left;
+      border-radius: 5px; /* Zakulacené rohy */
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(242, 242, 242, 0.9);
+      border-radius: 5px;
+      z-index: 1;
+      margin-top: 5px;
+      padding: 10px;
+      width: 100px;
+    }
+
+    .language-dropdown:hover .dropdown-content {
+      display: block; /* Zobrazit při najetí */
+    }
+
+    .dropdown-content a {
+      color: black; /* Barva textu */
+      text-decoration: none; /* Odstranit podtržení */
+      display: block; /* Každý odkaz na nový řádek */
+      padding: 5px;
+      transition: background-color 0.3s; /* Přechod */
+    }
+
+    .dropdown-content a:hover {
+      background-color: rgba(242, 242, 242, 0.7); /* Změna pozadí při najetí */
     }
   </style>
 </head>
 <body>
   <div class="logo">FLUENSE</div>
-  <a href="about.html" class="join-button">About Us</a> <!-- Odkaz na About Us -->
-  <button class="sign-up-button">Sign Up</button>
+  
+  <div class="language-dropdown">
+    <span id="selected-language">CZ</span>
+    <div class="dropdown-content">
+      <a href="#" onclick="setLanguage('CZ')">CZ</a>
+      <a href="#" onclick="setLanguage('EN')">EN</a>
+      <a href="#" onclick="setLanguage('DE')">DE</a>
+    </div>
+  </div>
+  
+  <a href="about.html" class="join-button" id="about-button">O nás</a>
+  <button class="sign-up-button" id="login-button">Přihlásit</button>
+
+  <script>
+    function setLanguage(language) {
+      document.getElementById('selected-language').innerText = language;
+
+      if (language === 'CZ') {
+        document.getElementById('about-button').innerText = 'O nás';
+        document.getElementById('login-button').innerText = 'Přihlásit';
+      } else if (language === 'EN') {
+        document.getElementById('about-button').innerText = 'About Us';
+        document.getElementById('login-button').innerText = 'Login';
+      } else if (language === 'DE') {
+        document.getElementById('about-button').innerText = 'Über uns';
+        document.getElementById('login-button').innerText = 'Anmelden';
+      }
+    }
+  </script>
 </body>
 </html>

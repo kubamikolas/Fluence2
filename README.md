@@ -1,2 +1,2 @@
 # Fluence2
-dasddkokot
+Platforma, která spojuje firmy a influencery

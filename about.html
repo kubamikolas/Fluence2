@@ -1,70 +1,301 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O nás - FLUENSE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f0f0; /* Světle šedé pozadí */
-            color: #333; /* Tmavě šedý text */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O nás - FLUENSE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff; /* Barevný přechod modro-fialový */
+      color: #333333;
+      text-align: left;
+      padding: 20px;
+    }
 
-        .header {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #4facfe; /* Barva nadpisu */
-        }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
 
-        .content {
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 18px;
-            line-height: 1.6;
-            padding: 20px;
-            background-color: white; /* Bílý blok pro obsah */
-            border-radius: 10px; /* Zaoblené rohy */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Stín pro efekt */
-        }
+    .block {
+      background-color: #f2f2f2;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center; /* Zarovnat text uvnitř bloku na střed */
+    }
 
-        .back-button {
-            margin-top: 30px;
-            padding: 10px 20px;
-            font-size: 18px;
-            color: white;
-            background-color: #4facfe; /* Barva tlačítka */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      text-align: center; /* Zarovnat název O nás na střed */
+    }
 
-        .back-button:hover {
-            background-color: #00f2fe; /* Tmavší barva při najetí */
-        }
-    </style>
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: center; /* Zarovnat text v odstavcích na střed */
+    }
+
+    /* Styl pro emoji */
+    .emoji {
+      font-size: 36px;
+      margin-right: 10px;
+    }
+
+    /* Styl pro otázky */
+    .question {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px 0;
+      font-size: 20px;
+    }
+
+    .answer {
+      display: none;
+      font-size: 18px;
+      margin-left: 20px;
+    }
+
+    .arrow {
+      margin-left: 10px;
+    }
+
+    /* Styl pro dropdown menu */
+    .dropdown {
+      position: absolute;
+      top: 20px;
+      left: 0;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 5px;
+      padding: 10px 0;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-button {
+      background-color: transparent;
+      color: black;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .dropdown-button:hover {
+      background-color: #f1f1f1;
+    }
+
+    .language-dropdown {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: black;
+      cursor: pointer;
+      padding: 10px 15px;
+      font-size: 18px;
+      text-align: left;
+      border-radius: 5px;
+    }
+
+    .language-dropdown:hover .dropdown-content {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="header">O nás</div>
-    
-    <div class="content">
-        <p>FLUENSE je inovativní platforma zaměřená na spojení influencerů a firem. Naším cílem je usnadnit spolupráci mezi těmito dvěma skupinami a poskytnout jim nástroje, které potřebují k úspěšnému marketingu.</p>
-        <p>Na naší platformě mohou influenceři procházet různé příležitosti ke spolupráci, zatímco firmy mohou snadno vyhledávat influencery podle jejich zaměření a sledovanosti.</p>
-        <p>Věříme, že efektivní marketing je založen na autentických vztazích, a proto jsme vytvořili prostor, kde mohou influenceři a firmy navazovat vzájemné kontakty a spolupracovat na úspěšných projektech.</p>
+    <div class="language-dropdown">
+        <span id="selected-language">CZ</span>
+        <div class="dropdown-content">
+          <a href="#" onclick="setLanguage('CZ')">CZ</a>
+          <a href="#" onclick="setLanguage('EN')">EN</a>
+          <a href="#" onclick="setLanguage('DE')">DE</a>
+        </div>
+      </div>
+
+  <div class="container">
+    <h1 id="about-title">O nás</h1>
+
+    <div class="block">
+      <h2 id="what-is-fluense-title"><span class="emoji">🤝</span> Co je FLUENSE?</h2>
+      <p id="what-is-fluense-text">FLUENSE je platforma, která spojuje influencery a firmy, umožňuje jim spolupracovat a dosahovat vzájemného úspěchu.</p>
     </div>
 
-    <button class="back-button" onclick="window.history.back()">Zpět</button>
+    <div class="block">
+      <h2 id="our-mission-title"><span class="emoji">🚀</span> Naše poslání</h2>
+      <p id="our-mission-text">Naším cílem je usnadnit spolupráci mezi influencery a firmami a vytvořit tak prostor pro kreativitu a inovaci.</p>
+    </div>
 
+    <div class="block">
+      <h2 id="who-are-we-title"><span class="emoji">💼</span> Pro koho jsme tu?</h2>
+      <p id="who-are-we-text">FLUENSE je tu pro všechny influencery, kteří chtějí rozšířit svou značku, a pro firmy, které hledají nové a efektivní způsoby propagace.</p>
+    </div>
+
+    <div class="block">
+      <h2 id="how-it-works-title"><span class="emoji">💬</span> Jak to funguje?</h2>
+      <p id="how-it-works-text">Jednoduše se zaregistrujte, propojíte své sociální sítě a začnete vyhledávat příležitosti ke spolupráci s firmami, které hledají influencery jako jste vy!</p>
+    </div>
+
+    <!-- Dropdown pro otázky -->
+    <div class="block">
+      <h2><span class="emoji">❓</span> Časté otázky</h2>
+      <div class="question">
+        <h3><span class="emoji">🔍</span> Jak mohu najít influencery?</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <p class="answer">Influencery můžete najít pomocí různých nástrojů a platforem, které vám umožní vyhledávat podle kategorií a zájmů.</p>
+
+      <div class="question">
+        <h3><span class="emoji">📈</span> Jaké výhody mám jako influencer?</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <p class="answer">Jako influencer můžete získat přístup k novým příležitostem, zvýšit svou viditelnost a spolupracovat s různými značkami.</p>
+
+      <div class="question">
+        <h3><span class="emoji">💰</span> Jaká je provize z spolupráce?</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <p class="answer">Provize se liší podle typu spolupráce a konkrétní dohody mezi influencery a značkami.</p>
+
+      <div class="question">
+        <h3><span class="emoji">🤔</span> Jak mohu navázat spolupráci s firmou?</h3>
+        <span class="arrow">▼</span>
+      </div>
+      <p class="answer">Jednoduše se zaregistrujte na platformě a začněte procházet nabídky spolupráce, které jsou k dispozici.</p>
+    </div>
+  </div>
+
+  <script>
+    const questions = document.querySelectorAll('.question');
+
+    questions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const arrow = question.querySelector('.arrow');
+
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        arrow.textContent = arrow.textContent === '▼' ? '▲' : '▼';
+      });
+    });
+
+    function setLanguage(lang) {
+      const selectedLanguage = document.getElementById('selected-language');
+      selectedLanguage.textContent = lang;
+
+      // Překlady pro angličtinu
+      if (lang === 'EN') {
+        document.getElementById("about-title").textContent = "About Us";
+        document.getElementById("what-is-fluense-title").textContent = "🤝 What is FLUENSE?";
+        document.getElementById("what-is-fluense-text").textContent = "FLUENSE is a platform that connects influencers and companies, allowing them to collaborate and achieve mutual success.";
+
+        document.getElementById("our-mission-title").textContent = "🚀 Our Mission";
+        document.getElementById("our-mission-text").textContent = "Our goal is to facilitate collaboration between influencers and companies, creating a space for creativity and innovation.";
+
+        document.getElementById("who-are-we-title").textContent = "💼 Who Are We?";
+        document.getElementById("who-are-we-text").textContent = "FLUENSE is here for all influencers who want to expand their brand and for companies looking for new and effective ways of promotion.";
+
+        document.getElementById("how-it-works-title").textContent = "💬 How It Works?";
+        document.getElementById("how-it-works-text").textContent = "Simply register, connect your social networks, and start looking for collaboration opportunities with companies looking for influencers like you!";
+
+        document.querySelectorAll('.question h3').forEach((question, index) => {
+          if (index === 0) {
+            question.textContent = "🔍 How can I find influencers?";
+          } else if (index === 1) {
+            question.textContent = "📈 What are the benefits of being an influencer?";
+          } else if (index === 2) {
+            question.textContent = "💰 What is the commission from collaborations?";
+          } else if (index === 3) {
+            question.textContent = "🤔 How can I start collaborating with a company?";
+          }
+        });
+      } else if (lang === 'DE') {
+        document.getElementById("about-title").textContent = "Über uns";
+        document.getElementById("what-is-fluense-title").textContent = "🤝 Was ist FLUENSE?";
+        document.getElementById("what-is-fluense-text").textContent = "FLUENSE ist eine Plattform, die Influencer und Unternehmen verbindet und es ihnen ermöglicht, zusammenzuarbeiten und gemeinsamen Erfolg zu erzielen.";
+
+        document.getElementById("our-mission-title").textContent = "🚀 Unsere Mission";
+        document.getElementById("our-mission-text").textContent = "Unser Ziel ist es, die Zusammenarbeit zwischen Influencern und Unternehmen zu erleichtern und einen Raum für Kreativität und Innovation zu schaffen.";
+
+        document.getElementById("who-are-we-title").textContent = "💼 Für wen sind wir da?";
+        document.getElementById("who-are-we-text").textContent = "FLUENSE ist für alle Influencer da, die ihre Marke erweitern möchten, und für Unternehmen, die nach neuen und effektiven Möglichkeiten der Werbung suchen.";
+
+        document.getElementById("how-it-works-title").textContent = "💬 Wie funktioniert das?";
+        document.getElementById("how-it-works-text").textContent = "Registrieren Sie sich einfach, verbinden Sie Ihre sozialen Netzwerke und suchen Sie nach Kooperationsmöglichkeiten mit Unternehmen, die nach Influencern wie Ihnen suchen!";
+
+        document.querySelectorAll('.question h3').forEach((question, index) => {
+          if (index === 0) {
+            question.textContent = "🔍 Wie kann ich Influencer finden?";
+          } else if (index === 1) {
+            question.textContent = "📈 Welche Vorteile habe ich als Influencer?";
+          } else if (index === 2) {
+            question.textContent = "💰 Wie hoch ist die Provision für die Zusammenarbeit?";
+          } else if (index === 3) {
+            question.textContent = "🤔 Wie kann ich mit einer Firma zusammenarbeiten?";
+          }
+        });
+      } else {
+        // Obnovit do češtiny
+        document.getElementById("about-title").textContent = "O nás";
+        document.getElementById("what-is-fluense-title").textContent = "🤝 Co je FLUENSE?";
+        document.getElementById("what-is-fluense-text").textContent = "FLUENSE je platforma, která spojuje influencery a firmy, umožňuje jim spolupracovat a dosahovat vzájemného úspěchu.";
+
+        document.getElementById("our-mission-title").textContent = "🚀 Naše poslání";
+        document.getElementById("our-mission-text").textContent = "Naším cílem je usnadnit spolupráci mezi influencery a firmami a vytvořit tak prostor pro kreativitu a inovaci.";
+
+        document.getElementById("who-are-we-title").textContent = "💼 Pro koho jsme tu?";
+        document.getElementById("who-are-we-text").textContent = "FLUENSE je tu pro všechny influencery, kteří chtějí rozšířit svou značku, a pro firmy, které hledají nové a efektivní způsoby propagace.";
+
+        document.getElementById("how-it-works-title").textContent = "💬 Jak to funguje?";
+        document.getElementById("how-it-works-text").textContent = "Jednoduše se zaregistrujte, propojíte své sociální sítě a začnete vyhledávat příležitosti ke spolupráci s firmami, které hledají influencery jako jste vy!";
+
+        document.querySelectorAll('.question h3').forEach((question, index) => {
+          if (index === 0) {
+            question.textContent = "🔍 Jak mohu najít influencery?";
+          } else if (index === 1) {
+            question.textContent = "📈 Jaké výhody mám jako influencer?";
+          } else if (index === 2) {
+            question.textContent = "💰 Jaká je provize z spolupráce?";
+          } else if (index === 3) {
+            question.textContent = "🤔 Jak mohu navázat spolupráci s firmou?";
+          }
+        });
+      }
+    }
+  </script>
 </body>
 </html>
