@@ -6,3 +6,5 @@ git push origin main
 
 
 pro spusteni localhostu: node app.js
+
+       

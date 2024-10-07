@@ -61,12 +61,15 @@
       justify-content: space-between;
       margin: 10px 0;
       font-size: 20px;
+      text-align: left;
+
     }
 
     .answer {
       display: none;
       font-size: 18px;
       margin: 0; /* Odstranění odsazení */
+      text-align: ;
     }
 
     .arrow {
@@ -123,7 +126,7 @@
     .language-dropdown {
       position: absolute;
       top: 20px;
-      left: 0;
+      left: 20px;
       color: black;
       cursor: pointer;
       padding: 10px 15px;
@@ -174,7 +177,7 @@
 
     <!-- Dropdown pro otázky -->
     <div class="block">
-      <h2><span class="emoji">❓</span> Časté otázky</h2>
+      <h2 id="frequent-questions-title"><span class="emoji">❓</span> Časté otázky</h2>
       <div class="question">
         <h3><span class="emoji">🔍</span> Jak mohu najít influencery?</h3>
         <span class="arrow">▼</span>
@@ -232,6 +235,7 @@
 
         document.getElementById("how-it-works-title").textContent = "💬 How It Works?";
         document.getElementById("how-it-works-text").textContent = "Simply register, connect your social media, and start looking for collaboration opportunities with companies that are looking for influencers like you!";
+        document.getElementById("frequent-questions-title").textContent = "❓ Frequent Questions";
 
         // Překlady pro otázky
         document.querySelectorAll('.question h3')[0].textContent = "🔍 How can I find influencers?";
@@ -261,6 +265,7 @@
 
         document.getElementById("how-it-works-title").textContent = "💬 Wie funktioniert es?";
         document.getElementById("how-it-works-text").textContent = "Registrieren Sie sich einfach, verbinden Sie Ihre sozialen Medien und beginnen Sie, nach Kooperationsmöglichkeiten mit Unternehmen zu suchen, die Influencer wie Sie suchen!";
+        document.getElementById("frequent-questions-title").textContent = "❓ Häufige Fragen";
 
         // Překlady pro otázky
         document.querySelectorAll('.question h3')[0].textContent = "🔍 Wie finde ich Influencer?";
@@ -290,6 +295,7 @@
 
         document.getElementById("how-it-works-title").textContent = "💬 Jak to funguje?";
         document.getElementById("how-it-works-text").textContent = "Jednoduše se zaregistrujte, propojíte své sociální sítě a začnete vyhledávat příležitosti ke spolupráci s firmami, které hledají influencery jako jste vy!";
+        document.getElementById("frequent-questions-title").textContent = "❓ Časté otázky";
 
         // Překlady pro otázky
         document.querySelectorAll('.question h3')[0].textContent = "🔍 Jak mohu najít influencery?";
